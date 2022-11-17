@@ -23,13 +23,15 @@ sudo apt-get install -y nvidia-docker2
 
 sudo service docker stop
 
-sudo service docker start
+sudo systemctl --now enable docker
 
 sudo docker ps
 
 sudo nvidia-container-cli --load-kmods info
 
 nvidia-smi
+
+sudo docker run --rm --gpus all nvidia/cuda:11.6.2-base-ubuntu20.04 nvidia-smi
 
 sudo docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark
 
